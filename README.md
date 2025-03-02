@@ -90,7 +90,7 @@ We love contributions! If you'd like to contribute to Structify, follow these st
 <hr />
 
 ## License 📄
-Structify is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Structify is open-source software licensed under the [MIT license](LICENSE).
 <hr />
 
 ## Ready to Supercharge Your Laravel Development? 🚀
