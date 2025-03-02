@@ -2,7 +2,64 @@
 
 namespace App\Dto;
 
+/**
+ * Class {{Entity}}Dto
+ *
+ * This class acts as a Data Transfer Object (DTO) for the {{Entity}} entity.
+ * It is used to encapsulate data and transfer it between different layers of the application,
+ * such as services, controllers, or repositories.
+ */
 class {{Entity}}Dto
 {
-    public function __construct() {}
+    /**
+     * The unique identifier of the entity.
+     *
+     * @var int|null
+     */
+    private ?int $id = null;
+
+    /**
+     * Constructor.
+     */
+    public function __construct(
+        // Add other attributes of the entity here as parameters.
+    ) {}
+
+    /**
+     * Sets the unique identifier of the entity.
+     *
+     * @param int $id The unique identifier of the entity.
+     * @return self
+     */
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * Gets the unique identifier of the entity.
+     *
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * Converts the DTO to an array.
+     *
+     * This method is useful for serializing the DTO into formats like JSON
+     * or for storing data in a database.
+     *
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            // Add other attributes of the entity here.
+        ];
+    }
 }

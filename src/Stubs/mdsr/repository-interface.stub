@@ -2,7 +2,55 @@
 
 namespace App\Repositories\Interfaces;
 
+use Illuminate\Database\Eloquent\Collection;
+use App\Models\{{Entity}};
+
+/**
+ * Interface {{Entity}}RepositoryInterface
+ *
+ * This interface defines the contract for the {{Entity}} repository.
+ * Any class that implements this interface must provide the methods defined here.
+ * This ensures consistency across different implementations of the repository.
+ */
 interface {{Entity}}RepositoryInterface
 {
+    /**
+     * Get all {{Entity}} records.
+     *
+     * @return Collection
+     */
+    public function all(): Collection;
 
+    /**
+     * Find a {{Entity}} by its ID.
+     *
+     * @param int $id The ID of the {{Entity}}.
+     * @return {{Entity}}|null
+     */
+    public function find(int $id): ?{{Entity}};
+
+    /**
+     * Create a new {{Entity}} record in the database.
+     *
+     * @param array $data The data to create the {{Entity}}.
+     * @return {{Entity}}
+     */
+    public function create(array $data): {{Entity}};
+
+    /**
+     * Update {{Entity}} records based on conditions.
+     *
+     * @param array $conditions The conditions to filter records for updating.
+     * @param array $data The data to update the {{Entity}} records.
+     * @return bool
+     */
+    public function update(array $conditions, array $data): bool;
+
+    /**
+     * Delete {{Entity}} records based on conditions.
+     *
+     * @param array $conditions The conditions to filter records for deletion.
+     * @return void
+     */
+    public function delete(array $conditions): void;
 }

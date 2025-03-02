@@ -2,14 +2,85 @@
 
 namespace App\Services;
 
+use App\Dto\{{Entity}}Dto;
+use App\Models\{{Entity}};
+use Illuminate\Database\Eloquent\Collection;
 use App\Repositories\Interfaces\{{Entity}}RepositoryInterface;
+use App\Services\Interfaces\{{Entity}}ServiceInterface;
 
-class {{Entity}}Service implement {{Entity}}ServiceInterface
+/**
+ * Class {{Entity}}Service
+ *
+ * This class implements the {{Entity}}ServiceInterface and provides business logic
+ * for the {{Entity}} entity. It interacts with the {{Entity}} repository to perform
+ * CRUD operations and other business-related tasks.
+ */
+class {{Entity}}Service implements {{Entity}}ServiceInterface
 {
+
     /**
-    * @param {{Entity}}RepositoryInterface $repository
-    */
+     * Constructor.
+     *
+     * @param {{Entity}}RepositoryInterface $repository The {{Entity}} repository instance.
+     */
     public function __construct(
-        protected {{Entity}}RepositoryInterface $repository,
+        protected {{Entity}}RepositoryInterface $repository
     ) {}
+
+    /**
+     * Get all {{Entity}} records.
+     *
+     * @return Collection
+     */
+    public function all(): Collection
+    {
+        return $this->repository->all();
+    }
+
+    /**
+     * Find a {{Entity}} by its ID.
+     *
+     * @param int $id The ID of the {{Entity}}.
+     * @return {{Entity}}|null
+     */
+    public function find(int $id): ?{{Entity}}
+    {
+        return $this->repository->find($id);
+    }
+
+    /**
+     * Create a new {{Entity}} record in the database.
+     *
+     * @param {{Entity}}Dto $dto The data to create the {{Entity}}.
+     * @return {{Entity}}
+     */
+    public function create({{Entity}}Dto $dto): {{Entity}}
+    {
+        return $this->repository->create($dto->toArray());
+    }
+
+    /**
+     * Update {{Entity}} records based on conditions.
+     *
+     * @param {{Entity}}Dto $dto The data to update the {{Entity}}.
+     * @return bool
+     */
+    public function update({{Entity}}Dto $dto): bool
+    {
+        return $this->repository->update(
+            conditions: [['id', '=', $dto->getId()]],
+            data: $dto->toArray(),
+        );
+    }
+
+    /**
+     * Delete {{Entity}} records based on conditions.
+     *
+     * @param array $conditions The conditions to filter records for deletion.
+     * @return void
+     */
+    public function delete(array $conditions): void
+    {
+        $this->repository->delete($conditions);
+    }
 }

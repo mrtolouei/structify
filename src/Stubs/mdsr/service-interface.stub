@@ -2,7 +2,55 @@
 
 namespace App\Services\Interfaces;
 
+use App\Dto\{{Entity}}Dto;
+use App\Models\{{Entity}};
+use Illuminate\Database\Eloquent\Collection;
+
+/**
+ * Interface {{Entity}}ServiceInterface
+ *
+ * This interface defines the contract for the {{Entity}} service.
+ * Any class that implements this interface must provide the methods defined here.
+ * This ensures consistency across different implementations of the service.
+ */
 interface {{Entity}}ServiceInterface
 {
+     /**
+     * Get all {{Entity}} records.
+     *
+     * @return Collection
+     */
+    public function all(): Collection;
 
+    /**
+     * Find a {{Entity}} by its ID.
+     *
+     * @param int $id The ID of the {{Entity}}.
+     * @return {{Entity}}|null
+     */
+    public function find(int $id): ?{{Entity}};
+
+    /**
+     * Create a new {{Entity}} record in the database.
+     *
+     * @param {{Entity}}Dto $dto The data to create the {{Entity}}.
+     * @return {{Entity}}
+     */
+    public function create({{Entity}}Dto $dto): {{Entity}};
+
+    /**
+     * Update {{Entity}} records based on conditions.
+     *
+     * @param {{Entity}}Dto $dto The data to update the {{Entity}}.
+     * @return bool
+     */
+    public function update({{Entity}}Dto $dto): bool;
+
+    /**
+     * Delete {{Entity}} records based on conditions.
+     *
+     * @param array $conditions The conditions to filter records for deletion.
+     * @return void
+     */
+    public function delete(array $conditions): void;
 }

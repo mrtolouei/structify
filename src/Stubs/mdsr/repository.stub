@@ -3,13 +3,78 @@
 namespace App\Repositories;
 
 use App\Models\{{Entity}};
+use App\Repositories\Interfaces\{{Entity}}RepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
-class {{Entity}}Repository implement {{Entity}}RepositoryInterface
+/**
+ * Class {{Entity}}Repository
+ *
+ * This class is responsible for interacting with the {{Entity}} entity in the database.
+ * It implements the {{Entity}}RepositoryInterface to ensure consistent methods are available.
+ */
+class {{Entity}}Repository implements {{Entity}}RepositoryInterface
 {
     /**
-    * @param {{Entity} $model
-    */
+     * Constructor.
+     *
+     * @param {{Entity}} $model The {{Entity}} model instance.
+     */
     public function __construct(
         protected {{Entity}} $model
     ) {}
+
+    /**
+     * Get all {{Entity}} records.
+     *
+     * @return Collection
+     */
+    public function all(): Collection
+    {
+        return $this->model->all();
+    }
+
+    /**
+     * Find a {{Entity}} by its ID.
+     *
+     * @param int $id The ID of the {{Entity}}.
+     * @return {{Entity}}|null
+     */
+    public function find(int $id): ?{{Entity}}
+    {
+        return $this->model->newQuery()->find($id);
+    }
+
+    /**
+     * Create a new {{Entity}} record in the database.
+     *
+     * @param array $data The data to create the {{Entity}}.
+     * @return {{Entity}}
+     */
+    public function create(array $data): {{Entity}}
+    {
+        return $this->model->newQuery()->create($data);
+    }
+
+    /**
+     * Update {{Entity}} records based on conditions.
+     *
+     * @param array $conditions The conditions to filter records for updating.
+     * @param array $data The data to update the {{Entity}} records.
+     * @return bool
+     */
+    public function update(array $conditions, array $data): bool
+    {
+        return $this->model->newQuery()->where($conditions)->update($data);
+    }
+
+    /**
+     * Delete {{Entity}} records based on conditions.
+     *
+     * @param array $conditions The conditions to filter records for deletion.
+     * @return void
+     */
+    public function delete(array $conditions): void
+    {
+        $this->model->newQuery()->where($conditions)->delete();
+    }
 }
