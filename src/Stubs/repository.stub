@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Repositories;
+
+use App\Models\{{Entity}};
+
+class {{Entity}}Repository implement {{Entity}}RepositoryInterface
+{
+    /**
+    * @param {{Entity} $model
+    */
+    public function __construct(
+        protected {{Entity}} $model
+    ) {}
+}

@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Services;
+
+use App\Repositories\Interfaces\{{Entity}}RepositoryInterface;
+
+class {{Entity}}Service implement {{Entity}}ServiceInterface
+{
+    /**
+    * @param {{Entity}}RepositoryInterface $repository
+    */
+    public function __construct(
+        protected {{Entity}}RepositoryInterface $repository,
+    ) {}
+}
