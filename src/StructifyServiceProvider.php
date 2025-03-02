@@ -2,6 +2,7 @@
 
 namespace Mrtolouei\Structify;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Mrtolouei\Structify\Commands\MakeMdsrCommand;
 
@@ -15,7 +16,7 @@ class StructifyServiceProvider extends ServiceProvider
                 MakeMdsrCommand::class,
             ]);
             $this->publishes([
-                __DIR__ . '/Stubs' => base_path('stubs/'),
+                __DIR__ . '/Stubs' => App::basePath('stubs/'),
             ], 'structify-stubs');
         }
     }
