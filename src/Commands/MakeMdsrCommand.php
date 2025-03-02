@@ -55,6 +55,10 @@ class MakeMdsrCommand extends Command
      */
     protected function getStub(string $type): string
     {
+        $customStubPath = App::basePath("stubs/mdsr/$type.stub");
+        if ($this->file->exists($customStubPath)) {
+            return $this->file->get($customStubPath);
+        }
         return $this->file->get(__DIR__ . "/../Stubs/mdsr/$type.stub");
     }
 
