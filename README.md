@@ -57,6 +57,65 @@ This will generate:
 - `App/Services/ProductService.php`
 
 It will also create a migration file for the Product model and update the MdsrServiceProvider with the necessary bindings.
+
+Here's how you can use the ProductService in a controller:
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Services\Interfaces\ProductServiceInterface;
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    public function __construct(protected ProductServiceInterface $productService) 
+    {
+        //
+    }
+    
+    public function index() 
+    {
+        return $this->productService->all();
+    }
+    
+    public function index(int $id) 
+    {
+        return $this->productService->find($id);
+    }
+    
+    public function create(Request $request) 
+    {
+        $productDto = new ProductDto(
+            title: 'Example',
+            slug: 'example',
+            price: 10,
+            stock: 5
+        );
+        return $this->productService->create($productDto);
+    }
+    
+    public function update(Request $request, int $id) 
+    {
+        $productDto = new ProductDto(
+            title: 'Example',
+            slug: 'example',
+            price: 10,
+            stock: 5
+        );
+        $productDto->setId($id);
+        return $this->productService->update($productDto);
+    }
+    
+    public function destroy(int $id) 
+    {
+        $this->productService->delete([
+            ['id', '=', $id]
+        ])
+    }
+}
+````
+
 <hr />
 
 ## Customize Stubs 🎨
